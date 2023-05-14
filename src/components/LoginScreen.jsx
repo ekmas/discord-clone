@@ -61,14 +61,16 @@ return (
                 <div className="mb-5">
                     <FormInput 
                         type={"email"}
+                        inputType={'email'}
                         setValue={setEmail}
                         inputError={emailError}
                         errorMessage={'- Email is invalid'}
                     />
                 </div>
                 <div>
-                    <FormInput 
+                    <FormInput
                         type={"password"}
+                        inputType={'password'}
                         setValue={setPassword}
                         inputError={passwordError}
                         errorMessage={'- Password is invalid'}
