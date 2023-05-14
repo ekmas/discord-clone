@@ -12,9 +12,10 @@ const [loadingButton, setLoadingButton] = useState(false)
 
 const [emailError, setEmailError] = useState(false)
 const [passwordError, setPasswordError] = useState(false)
+const [incorrectCredentials, setIncorrectCredentials] = useState(false)
 
 let handlePasswordReset = () => {
-    if(emailPattern.test(logInputValues.email)){
+    if(emailPattern.test(email)){
         setResetPassword(true)
     }else{
         setEmailError(false)
@@ -25,27 +26,18 @@ let handleLogSubmit = async (e) => {
     e.preventDefault()
     setLoadingButton(true)
 
-    if(emailPattern.test(email)){
-        setEmailError(false)
-    }else{
-        setEmailError(true)
-        setLoadingButton(false)
-    }
-
-    if(password.length > 7){
-        setPasswordError(false)
-    }else{
-        setPasswordError(true)
-        setLoadingButton(false)
-    }
+    setEmailError(!emailPattern.test(email))
+    setPasswordError(password.length < 7)
 
     if(emailPattern.test(email) && password.length > 7){
         try {
             await signInWithEmailAndPassword(auth, email, password)
-            setPasswordError(false)
+            setIncorrectCredentials(false)
         }catch{
-            setPasswordError(true)
+            setIncorrectCredentials(true)
         }
+        setLoadingButton(false)
+    }else{
         setLoadingButton(false)
     }
 }
@@ -59,21 +51,31 @@ return (
             </div>
             <div className="w-full text-left mt-5">
                 <div className="mb-5">
-                    <FormInput 
-                        type={"email"}
-                        inputType={'email'}
+                    <FormInput
+                        name={"email"}
+                        id={"login-email"}
+                        type={'text'}
                         setValue={setEmail}
-                        inputError={emailError}
-                        errorMessage={'- Email is invalid'}
+                        inputError={emailError || incorrectCredentials}
+                        errorMessage={
+                            !incorrectCredentials
+                                ? "- Email is invalid"
+                                : "- Either the password or the email is incorrect"
+                        }
                     />
                 </div>
                 <div>
                     <FormInput
-                        type={"password"}
-                        inputType={'password'}
+                        name={'password'}
+                        id={"login-password"}
+                        type={'password'}
                         setValue={setPassword}
-                        inputError={passwordError}
-                        errorMessage={'- Password is invalid'}
+                        inputError={passwordError || incorrectCredentials}
+                        errorMessage={
+                            !incorrectCredentials
+                              ? "- Password is invalid"
+                              : "- Either the password or the email is incorrect"
+                        }
                     />
                 </div>
                 <button className="mt-1">
