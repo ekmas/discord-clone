@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { emailPattern } from '../data/data'
 import { auth } from "../firebase"
 import { signInWithEmailAndPassword } from "firebase/auth";
+import FormInput from './FormInput';
+import Loading from './Loading';
 
 export default function LoginScreen({ email, setEmail, activeDiv, setResetPassword, setActiveDiv}) {
 
@@ -41,8 +43,6 @@ let handleLogSubmit = async (e) => {
         try {
             await signInWithEmailAndPassword(auth, email, password)
             setPasswordError(false)
-
-            console.log('success')
         }catch{
             setPasswordError(true)
         }
@@ -59,37 +59,27 @@ return (
             </div>
             <div className="w-full text-left mt-5">
                 <div className="mb-5">
-                    <label className="leading-[16px] tracking-wide mb-2 text-xs font-bold text-secondary-gray block" htmlFor="email">
-                        EMAIL
-                        <span className='text-red pl-1'>{emailError ? '- Email is invalid' : '*'}</span>
-                    </label>
-                    
-                    <div>
-                        <input onChange={(e) => {setEmail(e.target.value)}} className="bg-black focus:outline-none rounded-secondary text-base w-full h-10 p-2.5" type="email" name="email" id="email" />
-                    </div>
+                    <FormInput 
+                        type={"email"}
+                        setValue={setEmail}
+                        inputError={emailError}
+                        errorMessage={'- Email is invalid'}
+                    />
                 </div>
                 <div>
-                    <label className="leading-[16px] tracking-wide mb-2 text-xs font-bold text-secondary-gray block" htmlFor="email">
-                        PASSWORD
-                        <span className="text-red pl-1">{passwordError ? '- Password is invalid' : '*'}</span>
-                    </label>
-                    
-                    <div>
-                        <input onChange={(e) => {setPassword(e.target.value)}} className="bg-black focus:outline-none rounded-secondary text-base w-full h-10 p-2.5" type="password" name="password" id="password" />
-                    </div>
+                    <FormInput 
+                        type={"password"}
+                        setValue={setPassword}
+                        inputError={passwordError}
+                        errorMessage={'- Password is invalid'}
+                    />
                 </div>
                 <button className="mt-1">
                     <div onClick={() => {handlePasswordReset(true)}} className="font-medium text-link text-sm hover:underline">Forgot your password?</div>
                 </button>
                 <button onClick={handleLogSubmit} className="main-btn" type="submit">
                     {loadingButton ?
-                    <div className='flex'>
-                        <div style={{ animationDelay: '0ms' }} className='w-[6px] h-[6px] bg-white rounded-full opacity-100 animate-pulsing'></div>
-                        <div style={{ animationDelay: '100ms' }} className='w-[6px] h-[6px] bg-white rounded-full opacity-100 animate-pulsing mx-1'></div>
-                        <div style={{ animationDelay: '200ms' }} className='w-[6px] h-[6px] bg-white rounded-full opacity-100 animate-pulsing'></div>
-                    </div>
-                    :
-                    'Log in'
+                        <Loading /> : 'Log in'
                     }
                 </button>
                 <div className="mt-0.5 text-sm">
