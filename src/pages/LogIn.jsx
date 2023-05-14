@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from 'react-router-dom';
 import LoginScreen from '../components/LoginScreen';
+import RegisterScreen from '../components/RegisterScreen'
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -40,20 +41,15 @@ export default function LogIn() {
                 setActiveDiv={setActiveDiv}
             />
 
-            {/* <RegisterScreen 
-              activeDiv={activeDiv}
-              setActiveDiv={setActiveDiv}
+            <RegisterScreen 
+                activeDiv={activeDiv}
+                setActiveDiv={setActiveDiv}
             />
 
-            <TooYoung 
+            {/* <LoadingDiv 
               activeDiv={activeDiv}
               setActiveDiv={setActiveDiv}
-            />
-
-            <LoadingDiv 
-              activeDiv={activeDiv}
-              setActiveDiv={setActiveDiv}
-            /> */}
+            />  */}
         </div>
     </> 
   )
