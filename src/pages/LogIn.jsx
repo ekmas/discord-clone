@@ -4,6 +4,7 @@ import { auth } from "../firebase";
 import { useNavigate } from 'react-router-dom';
 import LoginScreen from '../components/LoginScreen';
 import RegisterScreen from '../components/RegisterScreen'
+import LoadingDiv from '../components/LoadingDiv';
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -46,10 +47,9 @@ export default function LogIn() {
                 setActiveDiv={setActiveDiv}
             />
 
-            {/* <LoadingDiv 
+            <LoadingDiv 
               activeDiv={activeDiv}
-              setActiveDiv={setActiveDiv}
-            />  */}
+            /> 
         </div>
     </> 
   )
