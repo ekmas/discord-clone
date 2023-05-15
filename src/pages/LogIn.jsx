@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import LoginScreen from '../components/LoginScreen';
 import RegisterScreen from '../components/RegisterScreen'
 import LoadingDiv from '../components/LoadingDiv';
+import ResetPassword from '../components/ResetPassword';
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -26,12 +27,12 @@ export default function LogIn() {
 
   return (
     <>
-        {/* <ResetPassword
+        <ResetPassword
             show={resetPassword} 
             email={email}
             setResetPassword={setResetPassword}
             setActiveDiv={setActiveDiv}
-        /> */}
+        />
 
         <div className="wrapper select-none invisiblebar">
             <LoginScreen 
