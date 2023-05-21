@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
 import MainNav from '../components/MainNav';
+import DirectMessages from '../components/DirectMessages';
+import Server from '../components/Server';
 
 export default function Main() {
   const [activeDiv, setActiveDiv] = useState('dm')
@@ -22,6 +24,12 @@ export default function Main() {
           setActiveDiv={setActiveDiv}
           activeDiv={activeDiv}
         />
+
+        {activeDiv === 'dm' ?
+          <DirectMessages />
+          :
+          <Server />
+        }
       </div>
     </>
   )
