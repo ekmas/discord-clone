@@ -4,6 +4,7 @@ import { doc } from "firebase/firestore";
 import { useDocumentData } from 'react-firebase-hooks/firestore'
 import { MainContext } from '../contexts/MainContext';
 import DmButton from './DmButton';
+import User from './User';
 
 export default function DmLeftSidebar({ setActiveSection, activeSection }) {
 
@@ -41,7 +42,7 @@ const [user, loading] = useDocumentData(doc(db, "users", `samke`));
                 })}
             </div>
 
-            {/* <User myPfp={myPfp} myName={myName}/> */}
+            <User />
         </div>
     </div>
   )
