@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import DmSidebar from './DmSidebar'
+import DmFriends from './DmFriends'
 
 export default function DirectMessages() {
   const [activeSection, setActiveSection] = useState('friends')
@@ -12,7 +13,7 @@ export default function DirectMessages() {
         />
 
         {activeSection === 'friends' ?
-            <p>friends</p>
+            <DmFriends />
             :
             <p>chat</p>
         }
