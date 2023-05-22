@@ -1,16 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { db } from '../firebase'
-import { doc } from "firebase/firestore";
-import { useDocumentData } from 'react-firebase-hooks/firestore'
+import { doc, onSnapshot } from "firebase/firestore";
 import { MainContext } from '../contexts/MainContext';
 import DmButton from './DmButton';
 import User from './User';
 
 export default function DmLeftSidebar({ setActiveSection, activeSection }) {
+  const [userChats, setUserChats] = useState([])
+  const { myName, allUsers } = useContext(MainContext)
 
-const { allUsers } = useContext(MainContext)
+  useEffect(() => {
+    if (myName) {
+      const userRef = doc(db, 'users', myName);
 
-const [user, loading] = useDocumentData(doc(db, "users", `samke`));
+      const unsubscribeUser = onSnapshot(userRef, (snapshot) => {
+        if (snapshot.exists()) {
+          const userData = snapshot.data().chats;
+          setUserChats(userData);          
+        }
+      });
+
+      return () => {
+        unsubscribeUser();
+      };
+    }
+  }, [myName]);
 
   return (
     <div className='bg-gray-4 relative max-h-screen m500:hidden'>
@@ -27,7 +41,7 @@ const [user, loading] = useDocumentData(doc(db, "users", `samke`));
 
                 <h2 className='text-xs font-semibold text-gray-3 p-dm-heading tracking-[.02em] uppercase'>Direct Messages</h2>
 
-                {!loading && user.chats.map(chat => {
+                {userChats.map(chat => {
                     let photoURL = allUsers.find(user => user.displayName === chat).photoURL
 
                     return(
