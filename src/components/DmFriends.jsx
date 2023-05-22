@@ -12,8 +12,9 @@ export default function DmFriends() {
   const [activeFriendsSection, setActiveFriendsSection] = useState('all')
   const { myName } = useContext(MainContext)
 
-  const [friends, setFriends] = useState(null);
-  const [requests, setRequests] = useState(null);
+  const [loading, setLoading] = useState(true)
+  const [friends, setFriends] = useState([]);
+  const [requests, setRequests] = useState([]);
 
   useEffect(() => {
     if (myName) {
@@ -24,6 +25,7 @@ export default function DmFriends() {
         if (snapshot.exists()) {
           const friendsData = snapshot.data().friends;
           setFriends(friendsData);
+          setLoading(false)
         }
       });
 
@@ -33,6 +35,7 @@ export default function DmFriends() {
           tempReq.push(doc.data());
         });
         setRequests(tempReq)
+        setLoading(false)
       });
 
       return () => {
@@ -50,17 +53,22 @@ export default function DmFriends() {
                 setActiveFriendsSection={setActiveFriendsSection}
             />
 
-            {activeFriendsSection === 'add friend' ?
+            {activeFriendsSection === 'add friend' ? 
             <DmAddFriend />
-            : activeFriendsSection === 'all' ?
-            <DmAllFriends 
-              initialAllFriends={friends}
-              setActiveFriendsSection={setActiveFriendsSection}
-            />
             :
-            <DmPendingRequests 
-              initialPendingRequests={requests}
-            />
+            !loading && 
+              <>
+                {activeFriendsSection === 'all' ?
+                  <DmAllFriends 
+                    setActiveFriendsSection={setActiveFriendsSection}
+                    friends={friends}
+                  />
+                  :
+                  <DmPendingRequests 
+                    requests={requests}
+                  />
+                }
+              </>
             }
         </div>
     </main>        

@@ -1,11 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { MainContext } from '../contexts/MainContext'
 
-export default function SearchInput({ initialResults, setResults }) {
+export default function SearchInput({ initialResults, setResults, allFriends }) {
 
 const { allUsers } = useContext(MainContext)
-
-console.log(initialResults)
 
 const [active, setActive] = useState(false)
 const [inputValue, setInputValue] = useState('')
@@ -13,7 +11,11 @@ const [inputValue, setInputValue] = useState('')
 let handleSearch = (e) => {
     setInputValue(e.target.value)
     setResults(initialResults.filter(friend => {
-        return friend.displayName.includes(e.target.value.trim())
+        if(allFriends){
+            return friend.includes(e.target.value.trim())
+        }else{
+            return friend.displayName.includes(e.target.value.trim())
+        }
     }))
 
     if(e.target.value !== ''){
