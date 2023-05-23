@@ -54,7 +54,9 @@ export default function DmFriends() {
             />
 
             {activeFriendsSection === 'add friend' ? 
-            <DmAddFriend />
+            <DmAddFriend 
+              myName={myName}
+            />
             :
             !loading && 
               <>
