@@ -14,9 +14,9 @@ let handleSendRequestInput = (e) => {
   setSendRequestDivBorderColor('#00AFF4')
 
   if(e.target.value.trim() === '' || e.target.value.trim() === myName){
-      setActiveSendRequestButton(false)
+    setActiveSendRequestButton(false)
   }else{
-      setActiveSendRequestButton(true)
+    setActiveSendRequestButton(true)
   }
 }
 
@@ -24,11 +24,11 @@ let handleSendRequestDivBorder = (e) => {
   if(sendRequestDivBorderColor === '#f38688' || sendRequestDivBorderColor === '#46c46e'){
 
   }else{
-      if(e === 'focus'){
+    if(e === 'focus'){
       setSendRequestDivBorderColor('#00AFF4')
-      }else{
+    }else{
       setSendRequestDivBorderColor('#000')
-      }
+    }
   }
 }
 
@@ -40,20 +40,21 @@ let handleSendRequestSubmit = async (e) => {
 
   if(userSnap.exists()) {
       try{
-      await setDoc(doc(db, `users/${myName}/requests`, `${sendRequestName}`), {
-          displayName: sendRequestName,
-          incoming: false
-      });
+        await setDoc(doc(db, `users/${myName}/requests`, `${sendRequestName}`), {
+            displayName: sendRequestName,
+            incoming: false
+        });
 
-      await setDoc(doc(db, `users/${sendRequestName}/requests`, `${myName}`), {
-          displayName: myName,
-          incoming: true
-      });
+        await setDoc(doc(db, `users/${sendRequestName}/requests`, `${myName}`), {
+            displayName: myName,
+            incoming: true
+        });
 
-      setSendRequestDivBorderColor('#46c46e')
+        setSendRequestDivBorderColor('#46c46e')
+        
       }catch(err){
-      console.log(err)
-      setSendRequestDivBorderColor('#f38688')
+        console.log(err)
+        setSendRequestDivBorderColor('#f38688')
       }
   }else {
       setSendRequestDivBorderColor('#f38688')
