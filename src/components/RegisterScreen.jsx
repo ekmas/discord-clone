@@ -55,7 +55,7 @@ let handleRegSubmit = async (e) => {
                 displayName: username,
             });
 
-            await setDoc(doc(db, "users", displayName), {
+            await setDoc(doc(db, "users", username), {
                 uid: res.user.uid,
                 displayName: username,
                 email,
