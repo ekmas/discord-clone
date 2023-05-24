@@ -8,8 +8,11 @@ import defaultpfp from '../media/img/defaultpfp.png'
 import { MainContext } from '../contexts/MainContext'
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { collection } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 export default function Main() {
+  const navigate = useNavigate()
+
   const [activeDiv, setActiveDiv] = useState('dm')
   const [myPfp, setMypfp] = useState('')
   const [myName, setMyName] = useState('')
