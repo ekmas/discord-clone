@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import DmSidebar from './DmSidebar'
 import DmFriends from './DmFriends'
 import { DmContext } from '../contexts/DmContext'
+import DmChat from './DmChat'
 
 export default function DirectMessages() {
   const [activeSection, setActiveSection] = useState('friends')
@@ -17,7 +18,9 @@ export default function DirectMessages() {
         {activeSection === 'friends' ?
             <DmFriends />
             :
-            <p>chat</p>
+            <DmChat 
+              activeConversationName={activeSection}
+            />
         }
       </div>
     </DmContext.Provider>
