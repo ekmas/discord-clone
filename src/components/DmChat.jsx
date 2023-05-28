@@ -5,6 +5,7 @@ import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
 import defaultpfp from '../media/img/defaultpfp.png'
 import MessageInput from './MessageInput'
+import MessageDate from './MessageDate'
 
 export default function DmChat({ activeConversationName }) {
   const [messages, setMessages] = useState([])
@@ -80,10 +81,9 @@ export default function DmChat({ activeConversationName }) {
             return(
             <div>
                 {newDay &&
-                  <div className='flex justify-center text-xs font-semibold text-gray-14 relative px-4 mt-[17px]'>
-                    <p className='z-10 px-2 py-px bg-main-gray'>{newDayDateFormat}</p>
-                    <div className='w-[calc(100%-32px)] bg-gray-10 h-px absolute top-2'></div>
-                  </div> 
+                  <MessageDate 
+                    newDayDateFormat={newDayDateFormat}
+                  />
                 }
 
                 {isSameSender && !newDay ? 
