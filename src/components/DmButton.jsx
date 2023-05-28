@@ -4,7 +4,7 @@ import { arrayRemove, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { MainContext } from '../contexts/MainContext';
 
-export default function DmButton({ photoURL, chat, activeSection, setActiveSection }) {
+export default function DmButton({ chat, activeSection, setActiveSection }) {
 
 const { myName } = useContext(MainContext)
 
@@ -19,7 +19,7 @@ const closeConversationButton = async () => {
   return (
     <div className={activeSection === `${chat}` ? 'text-white bg-gray-7 group flex items-center font-medium h-[42px] w-full rounded mb-1' : 'group hover:text-white hover:bg-gray-5 text-gray-3 flex items-center mb-1 font-medium h-[42px] w-full rounded'}>
         <button onClick={() => {setActiveSection(`${chat}`)}} className='flex h-full pl-2 items-center flex-auto'>
-            <div style={{ backgroundImage: `url(${photoURL === 'default' ? defaultpfp : photoURL})`}} className='w-8 h-8 rounded-full m850:hidden bg-center bg-cover mr-3'></div>
+            <div style={{ backgroundImage: `url(${defaultpfp})`}} className='w-8 h-8 rounded-full m850:hidden bg-center bg-cover mr-3'></div>
             <p className='font-medium'>{chat}</p>
         </button>
         <button onClick={() => {closeConversationButton()}} className='pr-2'>

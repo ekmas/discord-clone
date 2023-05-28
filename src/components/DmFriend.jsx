@@ -5,7 +5,7 @@ import { arrayRemove, arrayUnion, doc, getDoc, onSnapshot, setDoc, updateDoc } f
 import { db } from '../firebase';
 import { DmContext } from '../contexts/DmContext';
 
-export default function DmFriend({ photoURL, friend }) {
+export default function DmFriend({ friend }) {
   const { myName } = useContext(MainContext)
   const { setActiveSection } = useContext(DmContext)
 
@@ -71,7 +71,7 @@ export default function DmFriend({ photoURL, friend }) {
   return (
     <div className='h-[62px] rounded-lg before:w-[calc(100%-20px)] before:h-px before:bg-gray-7 before:absolute before:top-0 flex items-center justify-between relative mt-[-1px] right-[10px] px-[10px] hover:bg-gray-7 group/div cursor-pointer'>
         <div className='flex items-center'>
-            <div style={{ backgroundImage: `url(${photoURL === 'default' ? defaultpfp : photoURL})` }} className='w-8 h-8 rounded-full bg-center bg-cover mr-3'></div>
+            <div style={{ backgroundImage: `url(${defaultpfp})` }} className='w-8 h-8 rounded-full bg-center bg-cover mr-3'></div>
             <p className='font-semibold text-white text-ellipsis whitespace-nowrap overflow-hidden m400:max-w-[30px] m550:text-xs'>{friend}</p>
         </div>
 

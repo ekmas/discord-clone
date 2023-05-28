@@ -1,9 +1,6 @@
-import React, { useContext, useState } from 'react'
-import { MainContext } from '../contexts/MainContext'
+import React, { useState } from 'react'
 
 export default function SearchInput({ initialResults, setResults, allFriends }) {
-
-const { allUsers } = useContext(MainContext)
 
 const [active, setActive] = useState(false)
 const [inputValue, setInputValue] = useState('')

@@ -4,7 +4,7 @@ import { MainContext } from '../contexts/MainContext'
 import { arrayUnion, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 
-export default function DmPendingRequest({ request, photoURL }) {
+export default function DmPendingRequest({ request }) {
   let { myName } = useContext(MainContext)
 
   let handleRequestButton = async (btn) => {
@@ -25,7 +25,7 @@ export default function DmPendingRequest({ request, photoURL }) {
   return (
     <div className='h-[62px] rounded-lg before:w-[calc(100%-20px)] before:h-px before:bg-gray-7 before:absolute before:top-0 flex items-center justify-between relative mt-[-1px] right-[10px] px-[10px] hover:bg-gray-7 group/div cursor-pointer'>
         <div className='flex items-center'>
-            <div style={{ backgroundImage: `url(${photoURL === 'default' ? defaultpfp : photoURL})` }} className='w-8 h-8 rounded-full bg-center bg-cover mr-3'></div>
+            <div style={{ backgroundImage: `url(${defaultpfp})` }} className='w-8 h-8 rounded-full bg-center bg-cover mr-3'></div>
             <div className='flex flex-col'>
                 <p className='font-semibold text-white text-ellipsis whitespace-nowrap overflow-hidden m350:max-w-[30px] m550:text-xs leading-5'>{request.displayName}</p>
                 <p className='font-medium text-xs m550:text-[10px] m550:hidden text-secondary-gray'>{request.incoming ? 'Incoming Friend Request' : 'Outgoing Friend Request'}</p>

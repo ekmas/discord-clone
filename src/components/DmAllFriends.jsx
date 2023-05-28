@@ -8,7 +8,7 @@ import { doc, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
 
 export default function DmFriendsSearch({ setActiveFriendsSection }) {
-  const { allUsers, myName } = useContext(MainContext)
+  const { myName } = useContext(MainContext)
   
   const [initialAllFriends, setInitialAllFriends] = useState([])
   const [allFriends, setAllFriends] = useState([])
@@ -54,13 +54,10 @@ export default function DmFriendsSearch({ setActiveFriendsSection }) {
               </div>
               <div className='mt-4 h-[90%] mb-3 pb-3 overflow-y-scroll overflow-x-hidden chatbar m550:pl-[15px] pl-[30px]'>
                   {!loading && allFriends.map(friend => {
-                    let photoURL = allUsers.find(item => item.displayName === friend).photoURL
-
                     return(
                         <DmFriend 
                             key={friend}
                             friend={friend}
-                            photoURL={photoURL}
                         />
                     )
                   })}

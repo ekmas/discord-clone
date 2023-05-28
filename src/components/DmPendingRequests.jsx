@@ -8,7 +8,7 @@ import { collection, onSnapshot, query } from 'firebase/firestore'
 import { db } from '../firebase'
 
 export default function PendindRequests() {
-  const { allUsers, myName } = useContext(MainContext)
+  const { myName } = useContext(MainContext)
 
   const [initialPendingRequests, setInitialPendingRequests] = useState([])
   const [pendingRequests, setPendingRequests] = useState([])
@@ -54,13 +54,10 @@ export default function PendindRequests() {
 
                 <div className='mt-4 h-[90%] mb-3 pb-3 overflow-y-scroll overflow-x-hidden chatbar m550:pl-[15px] pl-[30px]'>
                     {!loading && pendingRequests.map(request => {
-                        let photoURL = allUsers.find(item => item.displayName === request.displayName).photoURL
-
                         return(
                             <DmPendingRequest 
                                 request={request}
                                 key={request.displayName}
-                                photoURL={photoURL}
                             />
                         )
                     })}

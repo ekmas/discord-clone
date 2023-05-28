@@ -7,7 +7,7 @@ import User from './User';
 
 export default function DmLeftSidebar({ setActiveSection, activeSection }) {
   const [userChats, setUserChats] = useState([])
-  const { myName, allUsers } = useContext(MainContext)
+  const { myName } = useContext(MainContext)
 
   useEffect(() => {
     if (myName) {
@@ -42,11 +42,8 @@ export default function DmLeftSidebar({ setActiveSection, activeSection }) {
                 <h2 className='text-xs font-semibold text-gray-3 p-dm-heading tracking-[.02em] uppercase'>Direct Messages</h2>
 
                 {userChats.map(chat => {
-                    let photoURL = allUsers.find(user => user.displayName === chat).photoURL
-
                     return(
                         <DmButton 
-                            photoURL={photoURL}
                             chat={chat}
                             key={chat}
                             activeSection={activeSection}

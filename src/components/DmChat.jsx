@@ -8,7 +8,7 @@ import MessageInput from './MessageInput'
 
 export default function DmChat({ activeConversationName }) {
   const [messages, setMessages] = useState([])
-  const { myName, allUsers } = useContext(MainContext)
+  const { myName } = useContext(MainContext)
 
   const dummy = useRef()
 
@@ -55,8 +55,6 @@ export default function DmChat({ activeConversationName }) {
             let dayDiff = currentDate.getDate() - messageDate.getDate()
 
             let newDayDateFormat = messageDate.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
-
-            let photoURL = allUsers.find(item => item.displayName === message.displayName).photoURL
 
             if(thisIndex === 0){
               isSameSender = false;
@@ -105,7 +103,7 @@ export default function DmChat({ activeConversationName }) {
                 <div className='px-4 m400:px-2 mt-[17px] py-1 hover:bg-gray-11'>
                   <div className='grid grid-cols-message m400:gap-2 gap-4 relative'>
                     <button className='pt-1 btn msgbtn h-max'>
-                      <div style={{ backgroundImage: `url(${photoURL === 'default' ? defaultpfp : photoURL})` }} className='bg-center msgbtn btn bg-cover h-10 rounded-full'></div>
+                      <div style={{ backgroundImage: `url(${defaultpfp})` }} className='bg-center msgbtn btn bg-cover h-10 rounded-full'></div>
                     </button>
                     <div className='flex flex-col min-h-[44px]'>
                       <div className='flex items-center'>
