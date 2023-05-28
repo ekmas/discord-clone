@@ -96,7 +96,7 @@ export default function DmChat({ activeConversationName }) {
                   <Message 
                     sender={message.displayName}
                     date={firstMessageDate}
-                    msg={message.displayName}
+                    msg={message.text}
                   />
                 }
             </div>
