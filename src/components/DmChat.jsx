@@ -3,9 +3,10 @@ import DmChatNav from './DmChatNav'
 import { MainContext } from '../contexts/MainContext'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
-import defaultpfp from '../media/img/defaultpfp.png'
 import MessageInput from './MessageInput'
 import MessageDate from './MessageDate'
+import SameSenderMessage from './SameSenderMessage'
+import Message from './Message'
 
 export default function DmChat({ activeConversationName }) {
   const [messages, setMessages] = useState([])
@@ -79,7 +80,7 @@ export default function DmChat({ activeConversationName }) {
             }
             
             return(
-            <div>
+            <div key={crypto.randomUUID()}>
                 {newDay &&
                   <MessageDate 
                     newDayDateFormat={newDayDateFormat}
@@ -87,33 +88,16 @@ export default function DmChat({ activeConversationName }) {
                 }
 
                 {isSameSender && !newDay ? 
-                  <div className='px-4 m400:px-2 py-1 hover:bg-gray-11 group'>
-                    <div className='grid grid-cols-message m400:gap-2 gap-4'>
-                        <div>
-                            <div className="text-center text-gray-14 m400:text-[10px] text-[11px] font-medium tracking-tighter flex items-center justify-center">
-                              <p className='leading-[22px] hidden group-hover:inline'>{formattedTime}</p>
-                            </div>
-                        </div>
-                        <div className='flex flex-col'>
-                          <p className='leading-[22px] break-words'>{message.text}</p>
-                        </div>
-                    </div>
-                  </div>
+                  <SameSenderMessage 
+                    formattedTime={formattedTime}
+                    msg={message.text}
+                  />
                 :
-                <div className='px-4 m400:px-2 mt-[17px] py-1 hover:bg-gray-11'>
-                  <div className='grid grid-cols-message m400:gap-2 gap-4 relative'>
-                    <button className='pt-1 btn msgbtn h-max'>
-                      <div style={{ backgroundImage: `url(${defaultpfp})` }} className='bg-center msgbtn btn bg-cover h-10 rounded-full'></div>
-                    </button>
-                    <div className='flex flex-col min-h-[44px]'>
-                      <div className='flex items-center'>
-                          <button className='btn msgbtn font-medium leading-[22px] mr-1.5 text-white w-min'>{message.displayName}</button>
-                          <p className='font-medium text-xs m400:text-[10px] text-gray-14 leading-[22px]'>{firstMessageDate}</p>
-                      </div>
-                      <p className='leading-[22px] break-words'>{message.text}</p>
-                    </div>
-                  </div>
-                </div>
+                  <Message 
+                    sender={message.displayName}
+                    date={firstMessageDate}
+                    msg={message.displayName}
+                  />
                 }
             </div>
         )})}
