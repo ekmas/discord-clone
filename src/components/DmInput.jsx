@@ -2,7 +2,7 @@ import { addDoc, collection } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { db } from '../firebase'
 
-export default function MessageInput({ myName, activeConversationName, dummy }) {
+export default function DmInput({ myName, activeConversationName, dummy }) {
   const [messageInput, setMessageInput] = useState('')
 
   let sendConversationMessage = async (e) => {

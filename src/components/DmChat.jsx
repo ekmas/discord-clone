@@ -3,7 +3,7 @@ import DmChatNav from './DmChatNav'
 import { MainContext } from '../contexts/MainContext'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
-import MessageInput from './MessageInput'
+import DmInput from './DmInput'
 import MessageDate from './MessageDate'
 import SameSenderMessage from './SameSenderMessage'
 import Message from './Message'
@@ -61,11 +61,11 @@ export default function DmChat({ activeConversationName }) {
             isSameSender = false;
             newDay = true
           }else{
-            isSameSender = (message.displayName === messages[thisIndex - 1].displayName)
+              isSameSender = (message.displayName === messages[thisIndex - 1].displayName)
 
-            if(new Date(message.createdAt.seconds * 1000).getDay() !== new Date(messages[thisIndex - 1].createdAt.seconds * 1000).getDay()){
+              if(new Date(message.createdAt.seconds * 1000).getDay() !== new Date(messages[thisIndex - 1].createdAt.seconds * 1000).getDay()){
                 newDay = true
-            }
+              }
           }
 
           if(dayDiff === 0){
@@ -91,7 +91,7 @@ export default function DmChat({ activeConversationName }) {
                   formattedTime={formattedTime}
                   msg={message.text}
                 />
-              :
+                :
                 <Message 
                   sender={message.displayName}
                   date={firstMessageDate}
@@ -102,7 +102,7 @@ export default function DmChat({ activeConversationName }) {
       )})}
       <span ref={dummy}></span>
       </div>
-      <MessageInput 
+      <DmInput 
         myName={myName}
         activeConversationName={activeConversationName}
         dummy={dummy}
