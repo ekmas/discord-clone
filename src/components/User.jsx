@@ -2,15 +2,16 @@ import React, { useContext } from 'react'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase'
 import { MainContext } from '../contexts/MainContext'
+import defaultpfp from '../media/img/defaultpfp.png'
 
 export default function User() {
 
-const { myName, myPfp } = useContext(MainContext)
+const { myName } = useContext(MainContext)
 
   return (
     <div className='w-full h-[53px] bg-black-4 text-white flex items-center justify-between px-2'>
         <div className='flex items-center'>
-            <div style={{ backgroundImage: `url(${myPfp})` }} className='w-8 h-8 rounded-full m850:hidden bg-center bg-cover mr-3'></div>
+            <div style={{ backgroundImage: `url(${defaultpfp})` }} className='w-8 h-8 rounded-full m850:hidden bg-center bg-cover mr-3'></div>
             <p className='font-semibold overflow-hidden max-w-[120px] m850:max-w-[70px] text-ellipsis whitespace-nowrap text-sm'>{myName}</p>
         </div>
         <button className='group w-8 h-8 rounded hover:bg-gray-7 flex items-center justify-center' onClick={() => {signOut(auth)}}>

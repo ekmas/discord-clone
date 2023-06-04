@@ -4,17 +4,17 @@ import { auth, db } from '../firebase';
 import MainNav from '../components/MainNav';
 import DirectMessages from '../components/DirectMessages';
 import Server from '../components/Server';
-import defaultpfp from '../media/img/defaultpfp.png'
 import { MainContext } from '../contexts/MainContext'
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { collection } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import discordlogo from '../media/img/discordlogo.png'
 
 export default function Main() {
   const navigate = useNavigate()
 
+  const [loading, setLoading] = useState(true)
   const [activeDiv, setActiveDiv] = useState('dm')
-  const [myPfp, setMypfp] = useState('')
   const [myName, setMyName] = useState('')
   const [allUsers] = useCollectionData(collection(db, 'users'), {
     snapshotListenOptions: { includeMetadataChanges: true },
@@ -29,11 +29,9 @@ export default function Main() {
         setTimeout(() => {
           setMyName(user.displayName)
 
-          if(user.photoURL === null){
-            setMypfp(defaultpfp)
-          }else{
-            setMypfp(user.photoURL)
-          }
+          setTimeout(() => {
+            setLoading(false)
+          }, [1000]);
         }, [1000])
       }
     });
@@ -41,7 +39,7 @@ export default function Main() {
   }, [])
 
   return (
-    <MainContext.Provider value={{ myName, myPfp, allUsers }}>
+    <MainContext.Provider value={{ myName, allUsers }}>
       <div className="w-screen h-screen grid grid-cols-main overflow-hidden">
         <MainNav 
           setActiveDiv={setActiveDiv}
@@ -53,6 +51,9 @@ export default function Main() {
           :
           <Server />
         }
+      </div>
+      <div style={{ transition: 'all ease 0.5s' }} className={loading ? 'select-none w-screen h-screen z-50 opacity-100 visible fixed flex flex-col items-center justify-center top-0 left-0 bg-black-3' : 'select-none w-screen h-screen invisible z-50 flex items-center justify-center flex-col opacity-0 fixed top-0 left-0 bg-black-3'}>
+        <img src={discordlogo} width={72} alt="" />
       </div>
     </MainContext.Provider>
   )

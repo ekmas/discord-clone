@@ -27,9 +27,9 @@ export default function DmLeftSidebar({ setActiveSection, activeSection }) {
   }, [myName]);
 
   return (
-    <div className='bg-gray-4 relative max-h-screen m500:hidden'>
+    <div className='bg-gray-4 relative max-h-screen m550:hidden'>
         <div className='flex items-center font-semibold text-base px-4 py-3 text-white border-b border-black h-[49px]'>
-            <p>Direct Messages</p>
+            <p className='m850:text-[13px]'>Direct Messages</p>
         </div>
 
         <div className='flex flex-col h-[calc(100vh-49px)]'>

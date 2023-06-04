@@ -9,7 +9,7 @@ export default function DirectMessages() {
 
   return (
     <DmContext.Provider value={{ setActiveSection }}>
-      <div className='grid grid-cols-dm m850:grid-cols-dm-responsive m500:grid-cols-1'>
+      <div className='grid grid-cols-dm m850:grid-cols-dm-responsive m550:grid-cols-1'>
         <DmSidebar 
             activeSection={activeSection}
             setActiveSection={setActiveSection}
