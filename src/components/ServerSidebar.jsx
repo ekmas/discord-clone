@@ -2,7 +2,7 @@ import React from 'react'
 import User from './User'
 import ServerChannelButton from './ServerChannelButton'
 
-export default function ServerLeftSidebar({ activeChannelName, setActiveChannelName }) {
+export default function ServerSidebar({ activeChannelName, setActiveChannelName }) {
   const channels = ['channel-1', 'channel-2', 'channel-3']
 
   return (
@@ -20,6 +20,7 @@ export default function ServerLeftSidebar({ activeChannelName, setActiveChannelN
                 {channels.map(channel => {
                   return(
                     <ServerChannelButton 
+                      key={channel}
                       channel={channel}
                       activeChannelName={activeChannelName}
                       setActiveChannelName={setActiveChannelName}

@@ -2,7 +2,7 @@ import { addDoc, collection } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { db } from '../firebase'
 
-export default function DmInput({ myName, activeConversationName, dummy }) {
+export default function DmInput({ myName, activeConversationName }) {
   const [messageInput, setMessageInput] = useState('')
 
   let sendConversationMessage = async (e) => {
@@ -21,7 +21,6 @@ export default function DmInput({ myName, activeConversationName, dummy }) {
         displayName: myName,
     });
     
-    dummy.current.scrollIntoView({ behavior: 'smooth' });
     setMessageInput('');
   }
 

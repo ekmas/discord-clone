@@ -26,13 +26,16 @@ export default function DmChat({ activeConversationName }) {
         messages.push(doc.data());
       });
       setMessages(messages)
-      console.log(messages)
     });
 
     return () => {
       unsub()
     }
   }, [activeConversationName])
+
+  useEffect(() => {
+    dummy.current.scrollIntoView({ behavior: 'smooth' });
+  }, [messages])
 
   return (
     <div className='max-h-screen min-h-screen relative bg-main-gray'>

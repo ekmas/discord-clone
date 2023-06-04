@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { auth, db } from '../firebase'
 import { addDoc, collection } from 'firebase/firestore'
 
-export default function ServerInput({ activeChannelName, dummy }) {
+export default function ServerInput({ activeChannelName }) {
   const [serverInputValue, setServerInputValue] = useState('')
 
   let sendServerMessage = async (e) => {
@@ -20,7 +20,6 @@ export default function ServerInput({ activeChannelName, dummy }) {
         displayName,
     });
 
-    dummy.current.scrollIntoView({ behavior: 'smooth' });
     setServerInputValue('');
   }
 

@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { MainContext } from '../contexts/MainContext';
+import React, { useEffect, useRef, useState } from 'react'
 import MessageDate from '../components/MessageDate'
 import SameSenderMessage from './SameSenderMessage';
 import Message from './Message';
@@ -9,7 +8,6 @@ import { db } from '../firebase';
 
 export default function ServerMessages({ activeChannelName }) {
   const [messages, setMessages] = useState([])
-  const { myName } = useContext(MainContext)
 
   const dummy = useRef()
 
@@ -28,6 +26,10 @@ export default function ServerMessages({ activeChannelName }) {
       unsub()
     }
   }, [activeChannelName])
+
+  useEffect(() => {
+    dummy.current.scrollIntoView({ behavior: 'smooth' });
+  }, [messages])
 
   return (
     <div className='h-full'>
