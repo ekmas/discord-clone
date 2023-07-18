@@ -34,7 +34,7 @@ body {
   }
 
   .wrapper {
-    @apply h-screen bg-bg bg-cover flex justify-center items-center tall:overflow-y-auto tall:items-start tall:py-[50px];
+    @apply full-page bg-bg bg-cover flex justify-center items-center tall:overflow-y-auto tall:items-start tall:py-[50px];
   }
 
   .wrapper > div {
@@ -111,6 +111,11 @@ body {
 
 .invisiblebar::-webkit-scrollbar-thumb {
   background: transparent;
+}
+
+.full-page {
+  height: 100vh;
+  height: 100svh;
 }
 
 @font-face {
