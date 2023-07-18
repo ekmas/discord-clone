@@ -13,35 +13,38 @@ export default function RegisterDate() {
 
   return (
     <div>
-        <label className="leading-[16px] tracking-wide mb-2 text-xs font-bold text-secondary-gray block" htmlFor="date">
-            DATE OF BIRTH
-        </label>
-        
-        <div className="text-base w-full h-10 grid gap-2.5 regform:gap-1 grid-cols-dropdowns">
-            <DateDropdownBtn
-                setDateDropdown={setMonthDropdown}
-                setDate={setMonth}
-                dateDropdown={monthDropdown}
-                dates={months}
-                date={month}
-            />
+      <label
+        className="leading-[16px] tracking-wide mb-2 text-xs font-bold text-secondary-gray block"
+        htmlFor="date"
+      >
+        DATE OF BIRTH
+      </label>
 
-            <DateDropdownBtn
-                setDateDropdown={setDayDropdown}
-                setDate={setDay}
-                dateDropdown={dayDropdown}
-                dates={days}
-                date={day}
-            />
+      <div className="text-base w-full h-10 grid gap-2.5 regform:gap-1 grid-cols-dropdowns">
+        <DateDropdownBtn
+          setDateDropdown={setMonthDropdown}
+          setDate={setMonth}
+          dateDropdown={monthDropdown}
+          dates={months}
+          date={month}
+        />
 
-            <DateDropdownBtn
-                setDateDropdown={setYearDropdown}
-                setDate={setYear}
-                dateDropdown={yearDropdown}
-                dates={years}
-                date={year}
-            />
-        </div>
+        <DateDropdownBtn
+          setDateDropdown={setDayDropdown}
+          setDate={setDay}
+          dateDropdown={dayDropdown}
+          dates={days}
+          date={day}
+        />
+
+        <DateDropdownBtn
+          setDateDropdown={setYearDropdown}
+          setDate={setYear}
+          dateDropdown={yearDropdown}
+          dates={years}
+          date={year}
+        />
+      </div>
     </div>
   )
 }

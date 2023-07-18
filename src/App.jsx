@@ -6,8 +6,8 @@ import Main from './pages/Main'
 export default function App() {
   return (
     <Routes>
-      <Route path='/' element={<LogIn />} />
-      <Route path='/app' element={<Main />} />
+      <Route path="/" element={<LogIn />} />
+      <Route path="/app" element={<Main />} />
     </Routes>
   )
 }

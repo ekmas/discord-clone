@@ -11,77 +11,77 @@
   /* outline: 1px solid green; */
 }
 
-body{
+body {
   font-family: normal;
   background-color: #363940;
 }
 
-@layer components{
-  .reset-password{
-    @apply fixed top-0 left-0 h-screen w-screen opacity-0 invisible flex justify-center items-center transition-all duration-200 bg-overlay
+@layer components {
+  .reset-password {
+    @apply fixed top-0 left-0 h-screen w-screen opacity-0 invisible flex justify-center items-center transition-all duration-200 bg-overlay;
   }
 
-  .reset-password.active{
-    @apply opacity-100 visible
+  .reset-password.active {
+    @apply opacity-100 visible;
   }
 
-  .reset-password .container{
-    @apply w-[440px] h-[206px] scale-50 transition-all duration-200
+  .reset-password .container {
+    @apply w-[440px] h-[206px] scale-50 transition-all duration-200;
   }
 
-  .reset-password.active .container{
-    @apply scale-100
+  .reset-password.active .container {
+    @apply scale-100;
   }
 
-  .wrapper{
-    @apply h-screen bg-bg bg-cover flex justify-center items-center tall:overflow-y-auto tall:items-start tall:py-[50px]
+  .wrapper {
+    @apply h-screen bg-bg bg-cover flex justify-center items-center tall:overflow-y-auto tall:items-start tall:py-[50px];
   }
 
-  .wrapper > div{
-    @apply hidden animate-spinning
+  .wrapper > div {
+    @apply hidden animate-spinning;
   }
 
-  .wrapper > div.active{
-    @apply block
+  .wrapper > div.active {
+    @apply block;
   }
 
-  .dropdown-btn{
-    @apply text-overlay-text bg-gray-4 hover:bg-gray-5 px-3 py-[8px] w-full text-left
+  .dropdown-btn {
+    @apply text-overlay-text bg-gray-4 hover:bg-gray-5 px-3 py-[8px] w-full text-left;
   }
 
-  .main-btn{
-    @apply relative text-white flex items-center justify-center w-full bg-button-initial hover:bg-button-hover ease-linear duration-150 font-medium text-base rounded-secondary leading-[24px] mb-[8px] mt-5 min-w-[130px] h-[44[x]] min-h-[44px]
+  .main-btn {
+    @apply relative text-white flex items-center justify-center w-full bg-button-initial hover:bg-button-hover ease-linear duration-150 font-medium text-base rounded-secondary leading-[24px] mb-[8px] mt-5 min-w-[130px] h-[44[x]] min-h-[44px];
   }
 
-  .main-btn.disabled{
+  .main-btn.disabled {
     cursor: not-allowed;
   }
 
-  .main-btn.disabled .continue{
-    opacity: .5;
+  .main-btn.disabled .continue {
+    opacity: 0.5;
     transition: all 0.2s;
   }
 
-  .main-btn.active{
+  .main-btn.active {
     cursor: pointer;
   }
 
-  .main-btn.active .continue{
+  .main-btn.active .continue {
     opacity: 1;
     transition: all 0.2s;
   }
 }
 
 .dropdownscrollbar::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 .dropdownscrollbar::-webkit-scrollbar-track {
-    background: transparent; 
+  background: transparent;
 }
 
 .dropdownscrollbar::-webkit-scrollbar-thumb {
-  background: #212226; 
+  background: #212226;
   border-radius: 20px;
   border: 1px solid #303136;
 }
@@ -91,25 +91,25 @@ body{
 }
 
 .chatbar::-webkit-scrollbar-track {
-  background: #2e3337; 
+  background: #2e3337;
 }
 
 .chatbar::-webkit-scrollbar-thumb {
-  background: #212226; 
+  background: #212226;
   border-radius: 20px;
   border: 3px solid #303136;
   background-clip: padding-box;
 }
 
-.invisiblebar::-webkit-scrollbar{
+.invisiblebar::-webkit-scrollbar {
   width: 10px;
 }
 
-.invisiblebar::-webkit-scrollbar-track{
+.invisiblebar::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.invisiblebar::-webkit-scrollbar-thumb{
+.invisiblebar::-webkit-scrollbar-thumb {
   background: transparent;
 }
 

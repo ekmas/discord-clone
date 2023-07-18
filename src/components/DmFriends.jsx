@@ -12,28 +12,24 @@ export default function DmFriends() {
 
   return (
     <main className="max-h-screen min-h-screen relative bg-main-gray">
-        <div className='h-full flex flex-col'>
-            <DmFriendsNav 
-                activeFriendsSection={activeFriendsSection}
-                setActiveFriendsSection={setActiveFriendsSection}
-            />
+      <div className="h-full flex flex-col">
+        <DmFriendsNav
+          activeFriendsSection={activeFriendsSection}
+          setActiveFriendsSection={setActiveFriendsSection}
+        />
 
-            {activeFriendsSection === 'add friend' ? 
-              <DmAddFriend 
-                myName={myName}
-              />
-              :
-              <>
-                {activeFriendsSection === 'all' ?
-                  <DmAllFriends 
-                    setActiveFriendsSection={setActiveFriendsSection}
-                  />
-                  :
-                  <DmPendingRequests />
-                }
-              </>
-            }
-        </div>
-    </main>        
+        {activeFriendsSection === 'add friend' ? (
+          <DmAddFriend myName={myName} />
+        ) : (
+          <>
+            {activeFriendsSection === 'all' ? (
+              <DmAllFriends setActiveFriendsSection={setActiveFriendsSection} />
+            ) : (
+              <DmPendingRequests />
+            )}
+          </>
+        )}
+      </div>
+    </main>
   )
 }
