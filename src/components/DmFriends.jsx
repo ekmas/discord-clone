@@ -11,7 +11,7 @@ export default function DmFriends() {
   const { myName } = useContext(MainContext)
 
   return (
-    <main className="max-h-screen min-h-screen relative bg-main-gray">
+    <main className="max-h-[100svh] min-h-[100svh] relative bg-main-gray">
       <div className="h-full flex flex-col">
         <DmFriendsNav
           activeFriendsSection={activeFriendsSection}

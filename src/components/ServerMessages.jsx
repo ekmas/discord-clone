@@ -36,7 +36,7 @@ export default function ServerMessages({ activeChannelName }) {
 
   return (
     <div className="h-full">
-      <div className="bg-main-gray h-[calc(100vh-117px)] pb-5 overflow-y-scroll chatbar text-overlay-text">
+      <div className="bg-main-gray h-[calc(100svh-117px)] pb-5 overflow-y-scroll chatbar text-overlay-text">
         <div className="m-4 mb-6">
           <div className="h-[68px] w-[68px] rounded-full bg-gray-12 flex items-center justify-center">
             <svg

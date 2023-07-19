@@ -41,7 +41,7 @@ export default function DmChat({ activeConversationName }) {
   }, [messages])
 
   return (
-    <div className="max-h-screen min-h-screen relative bg-main-gray">
+    <div className="max-h-[100svh] min-h-[100svh] relative bg-main-gray">
       <DmChatNav activeConversationName={activeConversationName} />
       <div className="bg-main-gray h-[calc(100%-117px)] pb-5 overflow-y-scroll chatbar text-overlay-text">
         {messages.map((message) => {

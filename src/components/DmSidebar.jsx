@@ -27,12 +27,12 @@ export default function DmLeftSidebar({ setActiveSection, activeSection }) {
   }, [myName])
 
   return (
-    <div className="bg-gray-4 relative max-h-screen m550:hidden">
+    <div className="bg-gray-4 relative max-h-[100svh] m550:hidden">
       <div className="flex items-center font-semibold text-base px-4 py-3 text-white border-b border-black h-[49px]">
         <p className="m850:text-[13px]">Direct Messages</p>
       </div>
 
-      <div className="flex flex-col h-[calc(100vh-49px)]">
+      <div className="flex flex-col h-[calc(100svh-49px)]">
         <div className="p-2 flex-1 overflow-y-scroll dropdownscrollbar">
           <button
             onClick={() => {

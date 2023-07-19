@@ -7,7 +7,7 @@ export default function ServerMain({ activeChannelName }) {
   const [toggleServerMemberList, setToggleServerMemberList] = useState(false)
 
   return (
-    <main className="max-h-screen relative">
+    <main className="max-h-[100svh] relative">
       <ServerNav
         activeChannelName={activeChannelName}
         toggleServerMemberList={toggleServerMemberList}
@@ -17,7 +17,7 @@ export default function ServerMain({ activeChannelName }) {
       <div
         className={
           toggleServerMemberList
-            ? 'h-[calc(100vh-49px)] grid grid-cols-server m1000:grid-cols-server-responsive'
+            ? 'h-[calc(100svh-49px)] grid grid-cols-server m1000:grid-cols-server-responsive'
             : 'h-[calc(100%-49px)] block'
         }
       >

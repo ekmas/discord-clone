@@ -9,7 +9,7 @@ export default function UsersSidebar({ toggleServerMemberList }) {
     <div
       className={
         toggleServerMemberList
-          ? 'bg-gray-4 relative min-h-[calc(100vh-49px)] max-h-[calc(100vh-49px)] m750:hidden'
+          ? 'bg-gray-4 relative min-h-[calc(100svh-49px)] max-h-[calc(100svh-49px)] m750:hidden'
           : 'hidden'
       }
     >
