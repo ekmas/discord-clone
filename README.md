@@ -1,3 +1,5 @@
+<img src="public/preview.png" />
+
 # Discord Clone
 
 When you enter this website you can register with your email.
